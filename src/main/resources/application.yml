@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672 # 15672? ?????? ?? ??
+    user: guestuser
+    passowrd : guestuser
+  application:
+    name: HelloRabbimq
+
