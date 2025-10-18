@@ -3,9 +3,9 @@ server:
 spring:
   rabbitmq:
     host: localhost
-    port: 5672 # 15672? ?????? ?? ??
-    user: guestuser
-    passowrd : guestuser
+    port: 5672 # 15672 은 admin web 포트
+    username: guestuser
+    password : guestuser
   application:
     name: HelloRabbimq
 
