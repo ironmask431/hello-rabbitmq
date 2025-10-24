@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
  * MessageListenerAdapter → Receiver.receiveMessage()
  */
 
-@Configuration
+//@Configuration
 public class RabbitMQConfig {
     // 큐 네임 설정.
     public static final String QUEUE_NAME = "WorkQueue";
