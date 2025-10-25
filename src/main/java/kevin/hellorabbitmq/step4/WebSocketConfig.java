@@ -1,4 +1,4 @@
-package kevin.hellorabbitmq.step3;
+package kevin.hellorabbitmq.step4;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -6,13 +6,13 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-//@Configuration
+@Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker("/topic"); // 클라이언트가 서버로 구독 하는 경로
-        registry.setApplicationDestinationPrefixes("/app"); // 클라이언트가 서버로 발행하는 경로
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/topic"); // 클라이언트 구독 경로
+        config.setApplicationDestinationPrefixes("/app"); // 서버 발행 경로
     }
 
     @Override
