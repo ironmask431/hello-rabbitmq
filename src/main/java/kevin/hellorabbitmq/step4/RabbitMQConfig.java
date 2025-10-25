@@ -7,7 +7,7 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class RabbitMQConfig {
     public static final String FANOUT_EXCHANGE_FOR_NEWS = "newsExchange";
 
@@ -38,6 +38,7 @@ public class RabbitMQConfig {
     }
 
     // 익스체인지와 큐를 연결하는 binding 각각 3개 선언
+    // 익스체인지로 발행된 메세지는 모든 큐에 전파된다.
     @Bean
     public Binding javaBinding(Queue javaQueue, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(javaQueue).to(fanoutExchange);
