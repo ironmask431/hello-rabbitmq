@@ -1,56 +1,56 @@
-package kevin.hellorabbitmq.step4;
-
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-//@Configuration
-public class RabbitMQConfig {
-    public static final String FANOUT_EXCHANGE_FOR_NEWS = "newsExchange";
-
-    // 큐 3가지 선언 bean으로 등록
-    public static final String JAVA_QUEUE = "javaQueue";
-    public static final String SPRING_QUEUE = "springQueue";
-    public static final String VUE_QUEUE = "vueQueue";
-
-    @Bean
-    public FanoutExchange fanoutExchange() {
-        // 메시지를 수신하면 연결된 모든 큐로 브로드캐스트
-        return new FanoutExchange(FANOUT_EXCHANGE_FOR_NEWS);
-    }
-
-    @Bean
-    public Queue javaQueue() {
-        return new Queue(JAVA_QUEUE, false);
-    }
-
-    @Bean
-    public Queue springQueue() {
-        return new Queue(SPRING_QUEUE, false);
-    }
-
-    @Bean
-    public Queue vueQueue() {
-        return new Queue(VUE_QUEUE, false);
-    }
-
-    // 익스체인지와 큐를 연결하는 binding 각각 3개 선언
-    // 익스체인지로 발행된 메세지는 모든 큐에 전파된다.
-    @Bean
-    public Binding javaBinding(Queue javaQueue, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(javaQueue).to(fanoutExchange);
-    }
-
-    @Bean
-    public Binding springBinding(Queue springQueue, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(springQueue).to(fanoutExchange);
-    }
-
-    @Bean
-    public Binding vueBinding(Queue vueQueue, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(vueQueue).to(fanoutExchange);
-    }
-}
+//package kevin.hellorabbitmq.step4;
+//
+//import org.springframework.amqp.core.Binding;
+//import org.springframework.amqp.core.BindingBuilder;
+//import org.springframework.amqp.core.FanoutExchange;
+//import org.springframework.amqp.core.Queue;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//
+////@Configuration
+//public class RabbitMQConfig {
+//    public static final String FANOUT_EXCHANGE_FOR_NEWS = "newsExchange";
+//
+//    // 큐 3가지 선언 bean으로 등록
+//    public static final String JAVA_QUEUE = "javaQueue";
+//    public static final String SPRING_QUEUE = "springQueue";
+//    public static final String VUE_QUEUE = "vueQueue";
+//
+//    @Bean
+//    public FanoutExchange fanoutExchange() {
+//        // 메시지를 수신하면 연결된 모든 큐로 브로드캐스트
+//        return new FanoutExchange(FANOUT_EXCHANGE_FOR_NEWS);
+//    }
+//
+//    @Bean
+//    public Queue javaQueue() {
+//        return new Queue(JAVA_QUEUE, false);
+//    }
+//
+//    @Bean
+//    public Queue springQueue() {
+//        return new Queue(SPRING_QUEUE, false);
+//    }
+//
+//    @Bean
+//    public Queue vueQueue() {
+//        return new Queue(VUE_QUEUE, false);
+//    }
+//
+//    // 익스체인지와 큐를 연결하는 binding 각각 3개 선언
+//    // 익스체인지로 발행된 메세지는 모든 큐에 전파된다.
+//    @Bean
+//    public Binding javaBinding(Queue javaQueue, FanoutExchange fanoutExchange) {
+//        return BindingBuilder.bind(javaQueue).to(fanoutExchange);
+//    }
+//
+//    @Bean
+//    public Binding springBinding(Queue springQueue, FanoutExchange fanoutExchange) {
+//        return BindingBuilder.bind(springQueue).to(fanoutExchange);
+//    }
+//
+//    @Bean
+//    public Binding vueBinding(Queue vueQueue, FanoutExchange fanoutExchange) {
+//        return BindingBuilder.bind(vueQueue).to(fanoutExchange);
+//    }
+//}
