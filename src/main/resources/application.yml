@@ -1,19 +1,34 @@
 server:
   port: 8080
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true
   rabbitmq:
     host: localhost
     port: 5672 # 15672 은 admin web 포트
     username: admin
     password : admin123
-    listener:
-      simple:
-        retry:
-          enabled: true # 메세지 처리 실패 시 재시도 활성화
-          initial-interval: 1000 # 재시도 대기 시간 1초
-          max-attempts: 3 # 최대 재시도 횟수
-          max-interval: 1000 #재시도간 최대 대기시간
-        default-requeue-rejected: false
+#    listener:
+#      simple:
+#        retry:
+#          enabled: true # 메세지 처리 실패 시 재시도 활성화
+#          initial-interval: 1000 # 재시도 대기 시간 1초
+#          max-attempts: 3 # 최대 재시도 횟수
+#          max-interval: 1000 #재시도간 최대 대기시간
+#        default-requeue-rejected: false
   application:
     name: HelloRabbimq
+
+
 
